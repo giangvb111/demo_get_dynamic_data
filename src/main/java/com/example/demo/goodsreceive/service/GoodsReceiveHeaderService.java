@@ -103,7 +103,6 @@ public class GoodsReceiveHeaderService implements GenericService<GoodsReceiveHea
     @Transactional(rollbackFor = {CommonException.class , Exception.class})
     public GoodsReceiveDto createGoodsReceive(GoodsReceiveDto goodsReceive, Locale locale) throws CommonException {
         GoodsReceiveDto createListResult = new GoodsReceiveDto();
-        CompletableFuture<Map<Long,String>> event;
 
         try {
 

@@ -41,12 +41,12 @@ public class WarehouseService implements GenericService<Warehouse> {
                 List<APIErrorDetail> errorDetails = new ArrayList<>();
                 AtomicInteger i = new AtomicInteger();
                 warehouseList.forEach(w -> {
-                    if (StringUtils.hasLength(w.getWarehouseName())) {
+                    if (w.getWarehouseName().length() > 20) {
                         APIErrorDetail apiErrorDetail = new APIErrorDetail(
                                 i.longValue(),
                                 "warehouseName",
                                 MessageCode.CHECK_MAXLENGTH_PARAMETER,
-                                messageSource.getMessage(MessageCode.CHECK_MAXLENGTH_PARAMETER, null, locale)
+                                messageSource.getMessage(MessageCode.CHECK_MAXLENGTH_PARAMETER, new Object[]{1, 20}, locale)
                         );
                         errorDetails.add(apiErrorDetail);
                     }
@@ -80,7 +80,6 @@ public class WarehouseService implements GenericService<Warehouse> {
                     e.getMessage(),
                     HttpStatus.INTERNAL_SERVER_ERROR
             );
-
         }
         return createWarehouseList;
     }

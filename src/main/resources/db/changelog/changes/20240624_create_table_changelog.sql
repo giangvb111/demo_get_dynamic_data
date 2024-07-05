@@ -55,5 +55,8 @@ create table general_data_table_search
 create table warehouse
 (
     warehouse_id              BIGINT PRIMARY KEY IDENTITY(1,1),
-    warehouse_name		      VARCHAR(255) NOT NULL
+    warehouse_name		      VARCHAR(255) NOT NULL ,
+    created_at                          DATETIME2 NOT NULL,
+    updated_at                          DATETIME2,
+    deleted_flg			                TINYINT DEFAULT 0
 )

@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @Setter
+@EqualsAndHashCode(callSuper = true)
 @Table(name = "warehouse")
 public class Warehouse extends BaseEntity {
 
@@ -20,21 +21,12 @@ public class Warehouse extends BaseEntity {
     private String warehouseName;
 
     public Warehouse() {
-    }
-
-    public Warehouse(LocalDateTime createdAt, LocalDateTime updatedAt, int deletedFlg) {
-        super(createdAt, updatedAt, deletedFlg);
-    }
-
-    public Warehouse(Long warehouseId, String warehouseName) {
-        this.warehouseId = warehouseId;
-        this.warehouseName = warehouseName;
+        super();
     }
 
     @Builder
-    public Warehouse(LocalDateTime createdAt, LocalDateTime updatedAt, int deletedFlg, Long warehouseId, String warehouseName) {
+    public Warehouse(LocalDateTime createdAt, LocalDateTime updatedAt, int deletedFlg, String warehouseName) {
         super(createdAt, updatedAt, deletedFlg);
-        this.warehouseId = warehouseId;
         this.warehouseName = warehouseName;
     }
 }

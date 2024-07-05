@@ -59,25 +59,24 @@ public class GoodsReceiveDetailService implements GenericService<GoodsReceiveDet
 
         List<APIErrorDetail> errorDetails = new ArrayList<>();
         CompletableFuture<Map<Long , String>> future;
-        boolean hasError = false ;
         List<GoodsReceiveDetail> goodsReceiveDetailList = goodsReceiveDto.getGoodsReceiveDetailList();
 
         if (CollectionUtils.isEmpty(goodsReceiveDetailList)) {
-            List<Long> warehouseListId = goodsReceiveDetailList.stream().map(GoodsReceiveDetail::getWarehouseId).toList();
-            future = eventPublisher.publishEvent(EventType.TYPE_WAREHOUSE , null , warehouseListId);
-
-            if (!CollectionUtils.isEmpty(future.get())) {
-                future.get().forEach((key , value) -> {
-                    APIErrorDetail errorDetail = new APIErrorDetail(key,
-                            "warehouseId",
-                            MessageCode.CHECK_EXISTS,
-                            messageSource.getMessage(
-                                    MessageCode.CHECK_EXISTS,
-                                    null, locale)
-                    );
-                    errorDetails.add(errorDetail);
-                });
-            }
+//            List<Long> warehouseListId = goodsReceiveDetailList.stream().map(GoodsReceiveDetail::getWarehouseId).toList();
+//            future = eventPublisher.publishEvent(EventType.TYPE_WAREHOUSE , null , warehouseListId);
+//
+//            if (!CollectionUtils.isEmpty(future.get())) {
+//                future.get().forEach((key , value) -> {
+//                    APIErrorDetail errorDetail = new APIErrorDetail(key,
+//                            "warehouseId",
+//                            MessageCode.CHECK_EXISTS,
+//                            messageSource.getMessage(
+//                                    MessageCode.CHECK_EXISTS,
+//                                    null, locale)
+//                    );
+//                    errorDetails.add(errorDetail);
+//                });
+//            }
 
             List<Long> productListId = goodsReceiveDetailList.stream().map(GoodsReceiveDetail::getProductId).toList();
             future = eventPublisher.publishEvent(EventType.TYPE_PRODUCT , null , productListId);
