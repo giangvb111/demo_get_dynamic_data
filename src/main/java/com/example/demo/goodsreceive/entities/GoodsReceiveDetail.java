@@ -31,6 +31,9 @@ public class GoodsReceiveDetail extends BaseEntity {
     @Column(name = "product_id")
     private Long productId;
 
+    @Column(name = "warehouse_id")
+    private Long warehouseId;
+
     @Column(name = "quantity")
     private BigDecimal quantity;
 
@@ -39,12 +42,13 @@ public class GoodsReceiveDetail extends BaseEntity {
 
     @Builder
     public GoodsReceiveDetail(LocalDateTime createdAt, LocalDateTime updatedAt, int deletedFlg,
-                              Long goodsReceiveDetailId, String goodsReceiveDetailNo, Long goodsReceiveHeaderId, Long productId , BigDecimal quantity) {
+                              Long goodsReceiveDetailId, String goodsReceiveDetailNo, Long goodsReceiveHeaderId, Long productId , Long warehouseId ,  BigDecimal quantity) {
         super(createdAt, updatedAt, deletedFlg);
         this.goodsReceiveDetailId = goodsReceiveDetailId;
         this.goodsReceiveDetailNo = goodsReceiveDetailNo;
         this.goodsReceiveHeaderId = goodsReceiveHeaderId;
         this.productId = productId;
+        this.warehouseId = warehouseId;
         this.quantity = quantity;
     }
 }

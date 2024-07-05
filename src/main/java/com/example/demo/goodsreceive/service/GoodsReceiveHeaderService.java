@@ -133,6 +133,7 @@ public class GoodsReceiveHeaderService implements GenericService<GoodsReceiveHea
                     GoodsReceiveDetail goodsReceiveDetail = GoodsReceiveDetail.builder()
                             .goodsReceiveHeaderId(createGoodsHeader.getGoodsReceiveHeaderId())
                             .goodsReceiveDetailNo(g.getGoodsReceiveDetailNo())
+                            .warehouseId(g.getWarehouseId())
                             .quantity(g.getQuantity())
                             .productId(g.getProductId())
                             .createdAt(currentTime)
