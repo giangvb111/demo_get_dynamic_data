@@ -55,12 +55,17 @@ create table goods_receive_detail
             REFERENCES goods_receive_header(goods_receive_header_id)
 );
 
---- create table general_data_table_search
-create table general_data_table_search
+-- --- create table setting_data
+create table setting_data
 (
     id              BIGINT PRIMARY KEY IDENTITY(1,1),
     screen_id 		BIGINT ,
     column_name		VARCHAR(255) NOT NULL,
+    table_name		VARCHAR(255) NOT NULL,
     data_type		VARCHAR(255) NOT NULL ,
-    column_width	INT NOT NULL
+    column_width	INT NOT NULL ,
+    status          TINYINT DEFAULT 1 ,
+    created_at                          DATETIME2 NOT NULL,
+    updated_at                          DATETIME2,
+    deleted_flg			                TINYINT DEFAULT 0
 )

@@ -27,7 +27,7 @@ public class GoodsReceiveController {
         return ResponseEntity.ok(goodsReceiveHeaderService.createGoodsReceive(goodsReceiveDto ,locale));
     }
 
-    @GetMapping(value = "/getAll")
+    @GetMapping(value = "/get-list")
     public ResponseEntity<List<Map<String , Object>>> getListGoodsReceive(@RequestParam(value = "screenId") String screenId) throws CommonException{
         return ResponseEntity.ok(goodsReceiveHeaderService.getListGoodsReceive(screenId));
     }

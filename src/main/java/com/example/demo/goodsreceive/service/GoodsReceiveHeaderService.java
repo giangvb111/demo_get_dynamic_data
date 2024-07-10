@@ -1,8 +1,6 @@
 package com.example.demo.goodsreceive.service;
 
 import com.example.demo.constant.MessageCode;
-import com.example.demo.event.EventPublisher;
-import com.example.demo.event.EventType;
 import com.example.demo.exception.APIErrorDetail;
 import com.example.demo.exception.CommonException;
 import com.example.demo.goodsreceive.dto.GoodsReceiveDto;
@@ -13,8 +11,6 @@ import com.example.demo.goodsreceive.repository.GoodsReceiveHeaderRepository;
 import com.example.demo.master.entities.SettingData;
 import com.example.demo.master.service.SettingDataService;
 import lombok.RequiredArgsConstructor;
-import org.modelmapper.ModelMapper;
-import org.springframework.context.MessageSource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -25,7 +21,6 @@ import org.springframework.util.CollectionUtils;
 
 import java.time.LocalDateTime;
 import java.util.*;
-import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 
 @Service
@@ -40,12 +35,6 @@ public class GoodsReceiveHeaderService implements GenericService<GoodsReceiveHea
 
     private final SettingDataService settingDataService;
 
-    private final ModelMapper modelMapper;
-
-    private final EventPublisher eventPublisher;
-
-    private final MessageSource messageSource;
-
     @Override
     public Page<GoodsReceiveHeader> findAll(Pageable pageable) throws CommonException {
          pageable = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize());
@@ -56,7 +45,6 @@ public class GoodsReceiveHeaderService implements GenericService<GoodsReceiveHea
     private List<SettingData> getListSettingData(Integer screenId) {
         return settingDataService.getSettingDataByScreenId(screenId);
     }
-
 
     /**
      *
