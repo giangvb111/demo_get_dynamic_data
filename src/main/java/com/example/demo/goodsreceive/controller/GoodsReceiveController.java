@@ -1,16 +1,12 @@
 package com.example.demo.goodsreceive.controller;
 
 import com.example.demo.exception.CommonException;
-import com.example.demo.goodsreceive.dto.GeneralDataDto;
 import com.example.demo.goodsreceive.dto.GoodsReceiveDto;
 import com.example.demo.goodsreceive.service.GoodsReceiveHeaderService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;

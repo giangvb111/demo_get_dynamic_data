@@ -69,3 +69,5 @@ create table setting_data
     updated_at                          DATETIME2,
     deleted_flg			                TINYINT DEFAULT 0
 )
+
+

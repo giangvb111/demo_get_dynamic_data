@@ -8,7 +8,8 @@ import com.example.demo.goodsreceive.entities.GoodsReceiveDetail;
 import com.example.demo.goodsreceive.entities.GoodsReceiveHeader;
 import com.example.demo.goodsreceive.repository.GoodsReceiveDetailRepository;
 import com.example.demo.goodsreceive.repository.GoodsReceiveHeaderRepository;
-import com.example.demo.master.entities.SettingData;
+import com.example.demo.master.dto.SettingDataDtoImpl;
+import com.example.demo.master.dto.SettingDataDtos;
 import com.example.demo.master.service.SettingDataService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -42,7 +43,7 @@ public class GoodsReceiveHeaderService implements GenericService<GoodsReceiveHea
     }
 
     // Get List Data Setting For Screen
-    private List<SettingData> getListSettingData(Integer screenId) {
+    private List<SettingDataDtoImpl> getListSettingData(Integer screenId) {
         return settingDataService.getSettingDataByScreenId(screenId);
     }
 
@@ -55,10 +56,10 @@ public class GoodsReceiveHeaderService implements GenericService<GoodsReceiveHea
     public List<Map<String , Object>> getListGoodsReceive(String screenId) throws CommonException {
         List<Map<String , Object>> resultList = new ArrayList<>();
         List<Map<String , Object>> dataMap = goodsReceiveHeaderRepository.getGoodsReceiveList(screenId);
-        List<SettingData> settingDataList = getListSettingData(Integer.parseInt(screenId));
+        List<SettingDataDtoImpl> settingDataList = getListSettingData(Integer.parseInt(screenId));
 
         Set<String> settingDataKeys = settingDataList.stream()
-                .map(SettingData::getColumnName)
+                .map(SettingDataDtos::getColumnName)
                 .map(key -> {
                     int indexOfDot = key.indexOf('.');
                     return indexOfDot != -1 ? key.substring(indexOfDot + 1) : key;
