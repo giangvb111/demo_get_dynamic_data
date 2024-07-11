@@ -29,7 +29,7 @@ public interface SettingDataRepository extends JpaRepository<SettingData, Long> 
     List<String> listTableName (Integer screenId);
 
     @Query(nativeQuery = true , value = "select gms.reference_screen_id ,gms.reference_screen_name from general_system_master gms where gms.screen_id  = :screenId")
-    List<Map<String , Integer>> screenOptionList (Integer screenId);
+    List<Map<String , String>> screenOptionList (Integer screenId);
 
     @Query(nativeQuery = true , value = "select m.screen_id from menu m where m.url = :url ")
     Integer getScreenIdByUrl(@Param("url") String url);
