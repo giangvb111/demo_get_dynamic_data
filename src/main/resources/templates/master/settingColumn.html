@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+    <title>Setting Column</title>
+
+</head>
+<body>
+<div>
+    <link rel="stylesheet" th:href="@{/css/css.css}" type="text/css"/>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script th:src="@{/js/setting/setting.js}"></script>
+</div>
+<div class="search">
+    <div class="menu">
+        <a href="/api/v1/setting?">Setting Column</a>
+        <a href="/api/v1/goods-receive">Goods-receive List</a>
+    </div>
+</div>
+
+<div class="header">
+    <h1>Setting Column</h1>
+</div>
+
+<div class="chooseTableMaster">
+    <select class="tableMasterList" onchange="changeTableMaster()">
+        <option th:each="screen : ${screenOption}"
+                th:value="${screen.reference_screen_id}"
+                th:text="${screen.reference_screen_name}"
+                th:selected="${screen.reference_screen_id == 2}">
+        </option>
+    </select>
+</div>
+
+<div class="addBtn">
+    <button class="btnSuccess btnAdd" onclick="addColumn()">Add</button>
+</div>
+<div class="errorMessage"><p></p></div>
+<div class="modal-body">
+    <div class="tableListSetting"></div>
+    <div class="tableSetting">
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btnSuccess" onclick="getDataFromTable()">OK</button>
+</div>
+
+<div class="footer">
+
+</div>
+<div id="loading" style="display:none;">
+    <div class="loading-content">
+        <p>Loading...</p>
+    </div>
+</div>
+
+
+</body>
+</html>

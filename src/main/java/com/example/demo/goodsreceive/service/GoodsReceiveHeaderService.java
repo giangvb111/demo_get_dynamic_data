@@ -77,6 +77,9 @@ public class GoodsReceiveHeaderService implements GenericService<GoodsReceiveHea
                 resultList.add(resultMap);
             }
         }
+        Map<String, Object> settingDataMap = new HashMap<>();
+        settingDataMap.put("settingDataList", settingDataList);
+        resultList.add(settingDataMap);
         return resultList;
     }
 

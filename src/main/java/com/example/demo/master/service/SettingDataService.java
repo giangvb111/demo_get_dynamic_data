@@ -33,7 +33,7 @@ public class SettingDataService implements GenericService<SettingData>{
     private final ModelMapper modelMapper;
 
     public ModelAndView initSetting(ModelAndView mav , HttpServletRequest request , Locale locale) throws CommonException{
-        mav.setViewName("screenName");
+        mav.setViewName("master/settingColumn");
         try {
             Integer screenId = settingDataRepository.getScreenIdByUrl(request.getRequestURI());
             if (Objects.isNull(screenId)) {
